@@ -35,27 +35,45 @@ void Revolution::initSphere() {
     double theta = 0.;
     double phi = 0.;
 
-    for(int i = 0; i< nbSlice; i++) {
-        for(int j = 0; j < nbStack; j++) {
+    for(int i = 0; i < nbStack + 1; i++) {
+        for(int j = 0; j <nbSlice; j++) {
             p.push_back(cos(theta) * sin(phi));
             p.push_back(cos(phi));
             p.push_back(sin(theta) * sin(phi));
-            phi += (M_PI) / nbStack;
+            theta += ( 2 * M_PI ) / nbSlice;
         }
-        theta += (2 * M_PI ) / nbSlice;
-        phi = 0.;
+        phi += M_PI / nbStack;
     }
 
-    //GERER SAUT
     index.clear();
-    for(int i = 0; i < nbSlice * nbStack ; i++) {
-        //MODIFIER ORDRE
-            index.push_back(i + 1);
-            index.push_back(i + nbStack + 1);
-            index.push_back(i + nbStack);
-            index.push_back(i + nbStack);
-            index.push_back(i);
-            index.push_back(i + 1);
+
+    int i;
+    int j;
+    for(i = 0; i < nbStack - 1; i++) {
+        for(j = 0; j < nbSlice - 1; j++) {
+            index.push_back(i*nbSlice + j + 1);
+            index.push_back((i+1)*nbSlice + j + 1);
+            index.push_back((i+1)*nbSlice + j);
+            index.push_back((i+1)*nbSlice + j);
+            index.push_back(i*nbSlice + j);
+            index.push_back(i*nbSlice + j + 1);
+        }
+        index.push_back(i*nbSlice);
+        index.push_back((i+1)*nbSlice);
+        index.push_back((i+1)*nbSlice + j);
+        index.push_back((i+1)*nbSlice + j);
+        index.push_back(i*nbSlice + j);
+        index.push_back(i*nbSlice);
+    }
+
+    for(j = 0; j < nbSlice - 1; j++) {
+        index.push_back((i+1)*nbSlice + j);
+        index.push_back(i*nbSlice + j);
+        index.push_back(i*nbSlice + j + 1);
+        //a enlever ?
+        index.push_back(i*nbSlice + j + 1);
+        index.push_back((i+1)*nbSlice + j + 1);
+        index.push_back((i+1)*nbSlice + j);
     }
 
     initVAO(index,p,n,t);
