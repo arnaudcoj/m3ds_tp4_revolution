@@ -36,10 +36,23 @@ void Revolution::initSphere() {
     double phi = 0.;
 
     for(int i = 0; i < nbStack + 1; i++) {
-        for(int j = 0; j <nbSlice; j++) {
+        theta = 0.;
+        for(int j = 0; j < nbSlice; j++) {
+            //q1
             p.push_back(cos(theta) * sin(phi));
             p.push_back(cos(phi));
             p.push_back(sin(theta) * sin(phi));
+            //q2
+            n.push_back(cos(theta) * sin(phi));
+            n.push_back(cos(phi));
+            n.push_back(sin(theta) * sin(phi));
+            //q3
+            cout << "theta " << theta << "  phi " << phi << endl;
+            cout << "s " << 1. - theta / (2. * M_PI) << endl;
+            t.push_back(1. - theta / (2. * M_PI));
+            cout << "t " << 1. - phi / M_PI << endl;
+            t.push_back(1. - phi / M_PI);
+
             theta += ( 2 * M_PI ) / nbSlice;
         }
         phi += M_PI / nbStack;
@@ -75,6 +88,13 @@ void Revolution::initSphere() {
         index.push_back((i+1)*nbSlice + j + 1);
         index.push_back((i+1)*nbSlice + j);
     }
+
+    index.push_back((i+1)*nbSlice + j);
+    index.push_back(i*nbSlice + j);
+    index.push_back(i*nbSlice);
+    index.push_back(i*nbSlice);
+    index.push_back((i+1)*nbSlice);
+    index.push_back((i+1)*nbSlice + j);
 
     initVAO(index,p,n,t);
 
