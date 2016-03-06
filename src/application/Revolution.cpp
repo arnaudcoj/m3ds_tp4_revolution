@@ -29,15 +29,16 @@ void Revolution::initSphere() {
     
     vector<unsigned int> index;
     
-    int nbSlice=20; // include last slice that closes sphere
+    int nbSlice=20;
     int nbStack=20;
 
     double theta = 0.;
     double phi = 0.;
 
-    for(int i = 0; i < nbStack + 1; i++) {
+    //on push 21 * 21 sommets car cela permet de fermer la sphere (avec le modulo 2 * pi de cos et sin on boucle)
+    for(int i = 0; i <= nbStack; i++) {
         theta = 0.;
-        for(int j = 0; j < nbSlice; j++) {
+        for(int j = 0; j <= nbSlice; j++) {
             //q1
             p.push_back(cos(theta) * sin(phi));
             p.push_back(cos(phi));
@@ -47,10 +48,7 @@ void Revolution::initSphere() {
             n.push_back(cos(phi));
             n.push_back(sin(theta) * sin(phi));
             //q3
-            cout << "theta " << theta << "  phi " << phi << endl;
-            cout << "s " << 1. - theta / (2. * M_PI) << endl;
             t.push_back(1. - theta / (2. * M_PI));
-            cout << "t " << 1. - phi / M_PI << endl;
             t.push_back(1. - phi / M_PI);
 
             theta += ( 2 * M_PI ) / nbSlice;
@@ -60,41 +58,19 @@ void Revolution::initSphere() {
 
     index.clear();
 
+    //ici on ajoute nbSlice +1 pour récuperer les sommets de la ligne supérieure (car il y a 21 sommets par ligne, cf. commentaire ci-dessus)
     int i;
     int j;
-    for(i = 0; i < nbStack - 1; i++) {
-        for(j = 0; j < nbSlice - 1; j++) {
-            index.push_back(i*nbSlice + j + 1);
-            index.push_back((i+1)*nbSlice + j + 1);
-            index.push_back((i+1)*nbSlice + j);
-            index.push_back((i+1)*nbSlice + j);
-            index.push_back(i*nbSlice + j);
-            index.push_back(i*nbSlice + j + 1);
+    for(i = 0; i <= nbStack ; i++) {
+        for(j = 0; j < nbSlice; j++) {
+            index.push_back((i+1)*nbSlice + j + 1); // haut gauche
+            index.push_back(i*nbSlice + j); // bas gauche
+            index.push_back(i*nbSlice + j + 1); // bas droit
+            index.push_back(i*nbSlice + j + 1); // bas droit
+            index.push_back((i+1)*nbSlice + j + 2); // haut droit
+            index.push_back((i+1)*nbSlice + j + 1); // haut gauche
         }
-        index.push_back(i*nbSlice);
-        index.push_back((i+1)*nbSlice);
-        index.push_back((i+1)*nbSlice + j);
-        index.push_back((i+1)*nbSlice + j);
-        index.push_back(i*nbSlice + j);
-        index.push_back(i*nbSlice);
     }
-
-    for(j = 0; j < nbSlice - 1; j++) {
-        index.push_back((i+1)*nbSlice + j);
-        index.push_back(i*nbSlice + j);
-        index.push_back(i*nbSlice + j + 1);
-        //a enlever ?
-        index.push_back(i*nbSlice + j + 1);
-        index.push_back((i+1)*nbSlice + j + 1);
-        index.push_back((i+1)*nbSlice + j);
-    }
-
-    index.push_back((i+1)*nbSlice + j);
-    index.push_back(i*nbSlice + j);
-    index.push_back(i*nbSlice);
-    index.push_back(i*nbSlice);
-    index.push_back((i+1)*nbSlice);
-    index.push_back((i+1)*nbSlice + j);
 
     initVAO(index,p,n,t);
 
