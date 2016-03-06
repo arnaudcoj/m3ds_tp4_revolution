@@ -121,8 +121,65 @@ void Revolution::initRevolution() {
     //  TODO
 
 
+    double theta;
+
+    //q2
+    vector<Vector3> segmentNormals;
+    Vector3 seg;
+    //normale aux segments
+    for(int i = 0; i < nbStack - 1; i++) {
+        seg = _profile[i+1] - _profile[i];
+        segmentNormals.push_back(Vector3(-seg.y(), seg.x(),0));
+    }
+
+    vector<Vector3> vertexNormals;
+    //normale aux sommets
+    vertexNormals.push_back(segmentNormals[0]);
+    for(int i = 0; i < nbStack -1; i++) {
+        vertexNormals.push_back((segmentNormals[i] + segmentNormals[i+1]) / 2);
+    }
 
 
+
+
+
+    //vao
+    Vector3 vectorTransform;
+    Vector3 vectorNormal;
+    for(int i = 0; i < nbStack; i++) {
+        theta = 0;
+        for(int j = 0; j <= nbSlice; j++) {
+            vectorTransform = _profile[i].rotationY(theta);
+            vectorNormal = vertexNormals[i].rotationY(theta);
+
+            p.push_back(vectorTransform.x());
+            p.push_back(vectorTransform.y());
+            p.push_back(vectorTransform.z());
+
+            //q2
+            n.push_back(vectorTransform.x());
+            n.push_back(vectorTransform.y());
+            n.push_back(vectorTransform.z());
+
+            //q3
+            t.push_back(1. - theta / (2. * M_PI));
+            t.push_back(1. - (i / (nbStack - 1.)));
+
+            theta += ( 2 * M_PI ) / nbSlice;
+        }
+    }
+
+    //index
+    for(int i = 0; i < nbStack - 1; i++) {
+        for(int j = 0; j <= nbSlice; j++) {
+            index.push_back((i+1)*nbSlice + j + 1); // haut gauche
+            index.push_back(i*nbSlice + j); // bas gauche
+            index.push_back(i*nbSlice + j + 1); // bas droit
+            index.push_back(i*nbSlice + j + 1); // bas droit
+            index.push_back((i+1)*nbSlice + j + 2); // haut droit
+            index.push_back((i+1)*nbSlice + j + 1); // haut gauche
+        }
+    }
     // *******
 
 
