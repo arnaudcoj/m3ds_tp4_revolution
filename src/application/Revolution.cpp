@@ -86,16 +86,303 @@ void Revolution::initCube() {
 
     vector<unsigned int> index;
 
-    // *******
-    //  TODO
+    // haut (3)
+    p.push_back(-1);
+    p.push_back(1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(1);
+    n.push_back(0);
+
+    t.push_back(0.66);
+    t.push_back(0.5);
+
+    p.push_back(-1);
+    p.push_back(1);
+    p.push_back(1);
+
+    n.push_back(0);
+    n.push_back(1);
+    n.push_back(0);
+
+    t.push_back(1);
+    t.push_back(0.5);
+
+    p.push_back(1);
+    p.push_back(1);
+    p.push_back(1);
+
+    n.push_back(0);
+    n.push_back(1);
+    n.push_back(0);
+
+    t.push_back(1);
+    t.push_back(1);
+
+    p.push_back(1);
+    p.push_back(1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(1);
+    n.push_back(0);
+
+    t.push_back(0.66);
+    t.push_back(1);
+
+    //cote (2)
+    p.push_back(-1);
+    p.push_back(-1);
+    p.push_back(-1);
+
+    n.push_back(-1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.33);
+    t.push_back(0.5);
+
+    p.push_back(-1);
+    p.push_back(-1);
+    p.push_back(1);
+
+    n.push_back(-1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.66);
+    t.push_back(0.5);
+
+    p.push_back(-1);
+    p.push_back(1);
+    p.push_back(1);
+
+    n.push_back(-1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.66);
+    t.push_back(1);
+
+    p.push_back(-1);
+    p.push_back(1);
+    p.push_back(-1);
+
+    n.push_back(-1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.33);
+    t.push_back(1);
 
 
+    //cote (1)
+    p.push_back(-1);
+    p.push_back(-1);
+    p.push_back(1);
 
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(1);
 
-    // *******
+    t.push_back(0);
+    t.push_back(0.5);
 
+    p.push_back(1);
+    p.push_back(-1);
+    p.push_back(1);
 
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(1);
 
+    t.push_back(0.33);
+    t.push_back(0.5);
+
+    p.push_back(1);
+    p.push_back(1);
+    p.push_back(1);
+
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(1);
+
+    t.push_back(0.33);
+    t.push_back(1);
+
+    p.push_back(-1);
+    p.push_back(1);
+    p.push_back(1);
+
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(1);
+
+    t.push_back(0);
+    t.push_back(1);
+
+    //cote (5)
+    p.push_back(1);
+    p.push_back(-1);
+    p.push_back(1);
+
+    n.push_back(1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.33);
+    t.push_back(0);
+
+    p.push_back(1);
+    p.push_back(-1);
+    p.push_back(-1);
+
+    n.push_back(1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.66);
+    t.push_back(0);
+
+    p.push_back(1);
+    p.push_back(1);
+    p.push_back(1);
+
+    n.push_back(1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.33);
+    t.push_back(0.5);
+
+    p.push_back(1);
+    p.push_back(1);
+    p.push_back(-1);
+
+    n.push_back(1);
+    n.push_back(0);
+    n.push_back(0);
+
+    t.push_back(0.66);
+    t.push_back(0.5);
+
+    //cote (6)
+    p.push_back(1);
+    p.push_back(-1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(-1);
+
+    t.push_back(0.66);
+    t.push_back(0);
+
+    p.push_back(-1);
+    p.push_back(-1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(-1);
+
+    t.push_back(1);
+    t.push_back(0);
+
+    p.push_back(1);
+    p.push_back(1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(-1);
+
+    t.push_back(0.66);
+    t.push_back(0.5);
+
+    p.push_back(-1);
+    p.push_back(1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(0);
+    n.push_back(-1);
+
+    t.push_back(1);
+    t.push_back(0.5);
+
+    //bas (4)
+    p.push_back(1);
+    p.push_back(-1);
+    p.push_back(1);
+
+    n.push_back(0);
+    n.push_back(-1);
+    n.push_back(0);
+
+    t.push_back(0);
+    t.push_back(0);
+
+    p.push_back(1);
+    p.push_back(-1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(-1);
+    n.push_back(0);
+
+    t.push_back(0.33);
+    t.push_back(0);
+
+    p.push_back(-1);
+    p.push_back(-1);
+    p.push_back(-1);
+
+    n.push_back(0);
+    n.push_back(-1);
+    n.push_back(0);
+
+    t.push_back(0.33);
+    t.push_back(0.5);
+
+    p.push_back(-1);
+    p.push_back(-1);
+    p.push_back(1);
+
+    n.push_back(0);
+    n.push_back(-1);
+    n.push_back(0);
+
+    t.push_back(0);
+    t.push_back(0.5);
+
+    // index
+    int face = 4;
+    for(int i = 0; i<3; i++){
+        index.push_back(0 + i * face);
+        index.push_back(1 + i * face);
+        index.push_back(2 + i * face);
+        index.push_back(0 + i * face);
+        index.push_back(2 + i * face);
+        index.push_back(3 + i * face);
+    }
+
+    for(int i = 3; i<5; i++){
+        index.push_back(0 + i * face);
+        index.push_back(1 + i * face);
+        index.push_back(2 + i * face);
+        index.push_back(1 + i * face);
+        index.push_back(3 + i * face);
+        index.push_back(2 + i * face);
+    }
+
+    index.push_back(0 + 5 * face);
+    index.push_back(2 + 5 * face);
+    index.push_back(1 + 5 * face);
+    index.push_back(0 + 5 * face);
+    index.push_back(3 + 5 * face);
+    index.push_back(2 + 5 * face);
 
     initVAO(index,p,n,t);
 
@@ -116,9 +403,6 @@ void Revolution::initRevolution() {
     int nbStack=_profile.size();
 
     std::vector<Vector3> normalProfile; // to compute normal profile
-
-    // *******
-    //  TODO
 
 
     double theta;
@@ -180,10 +464,6 @@ void Revolution::initRevolution() {
             index.push_back((i+1)*nbSlice + j + 1); // haut gauche
         }
     }
-    // *******
-
-
-
 
 
     initVAO(index,p,n,t);
