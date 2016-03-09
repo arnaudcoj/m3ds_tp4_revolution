@@ -2,12 +2,7 @@ Cojez Arnaud
 Camus Tristan
 
 Q2.
-La normale correspond à un rayon de la sphère partant de l'origine et arrivant au point donné.
+  La normale correspond à un rayon de la sphère partant de l'origine et arrivant au point donné.
 
-Q3.
-La "dernière" slice a un bug de texture
-
-Doit contenir :
-- ce que vous n'avez pas fait (et pourquoi). Précisez explicitement "tout à été fait et fonctionne parfaitement" si c'est le cas.
-- difficultés rencontrées.
-- commentaires éventuels sur le TP (points à éclaircir, longueur du sujet, etc).
+Problèmes rencontrés :
+  Pour initRevolution, la forme de base est bien construite,mais dès que l'on commence à rajouter des points ce n'est plus le cas. Nous ne savons pas pourquoi (sûrement dans les Remarques).
